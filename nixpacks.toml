@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python312"]
+
+[phases.install]
+cmds = ["python -m pip install --upgrade pip", "python -m pip install -r requirements-railway.txt"]
+
+[start]
+cmd = "gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120 railway_app:app"
